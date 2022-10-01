@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-quiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content">
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="text" name="ma_sp" placeholder="Nhap Ma Sp">
+            <input type="text" name="ten_sp" placeholder="Nhap Ten Sp">
+            <input type="text" name="so_luong" placeholder="Nhap So Luong">
+            <input type="Submit">
+        </form>
+
+        <table>
+            <tr>
+                <th>Ma SP</th>
+                <th>Ten SP</th>
+                <th>So Luong</th>
+            </tr>
+
+            <% sanPhams.map(item => { %>
+                <tr>
+                    <td>
+                        <%=item.ma_sp%>
+                    </td>
+                    <td>
+                        <%=item.ten_sp%>
+                    </td>
+                    <td>
+                        <%=item.so_luong%>
+                    </td>
+
+                    <td>
+                        <form action="/delete" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="ma_sp" value="<%=item.ma_sp%>" />
+                            <input type="submit" value="Xoa">
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="/update" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="ma_sp" value="<%=item.ma_sp%>" placeholder="Nhap Ma Sp">
+                            <input type="text" name="ten_sp" placeholder="Nhap Ten SP">
+                            <input type="number" name="so_luong" placeholder="Nhap So Luong">
+                            <input type="submit" value="Update">
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+
+</body>
+
+</html>
